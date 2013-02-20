@@ -17,9 +17,10 @@ function main {
   local ghome="./$(git rev-parse --show-cdup)"
   local pth_cache="$ghome/vendor/cache/pip"
 
+  set +u; source $ghome/bin/activate; set -u
   mkdir -p "$pth_cache"
-   pip install --download-directory "$pth_cache" "$@"
-   dir2pi "$pth_cache"
+  pip install --download-directory "$pth_cache" "$@"
+  dir2pi "$pth_cache"
 }
 
 require sub "$BASH_SOURCE" "$@"

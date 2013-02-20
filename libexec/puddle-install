@@ -17,7 +17,8 @@ function main {
   local ghome="$(cd -P "./$(git rev-parse --show-cdup)" && pwd -P)"
   local pth_cache="$ghome/vendor/cache/pip"
 
-   pip install --index-url=file://"$pth_cache/simple" "$@"
+  set +u; source $ghome/bin/activate; set -u
+  pip install --upgrade --index-url=file://"$pth_cache/simple" "$@"
 }
 
 require sub "$BASH_SOURCE" "$@"
