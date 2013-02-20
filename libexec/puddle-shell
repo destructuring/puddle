@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #/ NAME
-#/     puddle-init -- make a Python virtualenv
+#/     puddle-shell -- bash subshell with puddle virtualenv activated
 #/
 #/ SYNOPSIS
-#/     puddle init where]
+#/     puddle shell
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
@@ -14,11 +14,9 @@ source "$shome/libexec/_jason"
 
 # entry point
 function main {
-  local vhome="$1"; shift
-
-  if [[ ! -x "$vhome/bin/python" ]]; then
-    python $shome/libexec/virtualenv.py --extra-search-dir=$shome/vendor --never-download "$vhome"
-  fi
+  "$shome/bin/puddle" init .
+  set +u; source "$shome/bin/activate"; set -u
+  exec bash
 }
 
 require sub "$BASH_SOURCE" "$@"

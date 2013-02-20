@@ -4,7 +4,7 @@
 #/     puddle-cache -- dowload pip package and create index
 #/
 #/ SYNOPSIS
-#/     puddle cache [cache] [packages...]
+#/     puddle cache [packages...]
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
@@ -14,8 +14,10 @@ source "$shome/libexec/_jason"
 
 # entry point
 function main {
-  local pth_cache="$1"; shift
+  local ghome="./$(git rev-parse --show-cdup)"
+  local pth_cache="$ghome/vendor/cache/pip"
 
+  mkdir -p "$pth_cache"
    pip install --download-directory "$pth_cache" "$@"
    dir2pi "$pth_cache"
 }
