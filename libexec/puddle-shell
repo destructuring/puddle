@@ -15,7 +15,11 @@ source "$shome/libexec/_jason"
 # entry point
 function main {
   "$shome/bin/puddle" init .
+
   set +u; source "$shome/bin/activate"; set -u
+
+  local ghome="$(cd -P "./$(git rev-parse --show-cdup)" && pwd -P)"
+  set +u; source "$ghome/bin/activate"; set -u
   exec bash
 }
 
