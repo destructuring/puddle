@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #/ NAME
-#/     setup-virtualenv -- make a Python virtualenv
+#/     puddle-cache -- dowload pip package and create index
 #/
 #/ SYNOPSIS
-#/     setup virtualenv [where]
+#/     puddle cache [cache] [packages...]
 
 # figure out the project root under which bin, lib live
 shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
@@ -14,11 +14,10 @@ source "$shome/libexec/_jason"
 
 # entry point
 function main {
-  local vhome="$1"; shift
+  local pth_cache="$1"; shift
 
-  if [[ ! -x "$vhome/.awscli/bin/python" ]]; then
-    python $shome/libexec/virtualenv.py --extra-search-dir=$shome/vendor --never-download "$vhome"
-  fi
+   pip install --download-directory "$pth_cache" "$@"
+   dir2pi "$pth_cache"
 }
 
 require sub "$BASH_SOURCE" "$@"

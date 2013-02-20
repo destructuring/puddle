@@ -17,3 +17,6 @@
 /include/
 /lib/
 /libexec/virtualenv.pyc
+/download-directory bin/dir2pi
+/build
+/bin/dir2pi
