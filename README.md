@@ -18,5 +18,5 @@ tl;dr
     git clone https://github.com/destructuring puddle
     cd puddle
     bin/puddle init
-    bin/puddle cache supervisor uwsgi
-    bin/puddle install supervisor uwsgi
+    bin/puddle cache supervisor uwsgi awscli
+    bin/puddle install supervisor uwsgi awscli
