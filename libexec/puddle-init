@@ -16,9 +16,12 @@ source "$shome/libexec/_jason"
 function main {
   local vhome="$1"; shift
 
-  if [[ ! -x "$vhome/bin/python" ]]; then
-    python $shome/libexec/virtualenv.py --extra-search-dir=$shome/vendor --never-download "$vhome"
+  local cmd_venv="$shome/bin/virtualenv"
+  if [[ ! -x "$cmd_venv" ]]; then
+    cmd_venv="$shome/libexec/virtualenv.py"
   fi
+
+  $cmd_venv --extra-search-dir=$shome/vendor --never-download "$vhome"
 
   "$shome/bin/puddle" install pip2pi
 }

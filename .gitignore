@@ -20,3 +20,4 @@
 /download-directory bin/dir2pi
 /build
 /bin/dir2pi
+/bin/virtualenv*
