@@ -12,3 +12,11 @@ To cache a pip:
 To install a pip from the cache:
 
     bin/puddle install [package]
+
+tl;dr
+
+    git clone https://github.com/destructuring puddle
+    cd puddle
+    bin/puddle init
+    bin/puddle cache supervisor uwsgi
+    bin/puddle install supervisor uwsgi
