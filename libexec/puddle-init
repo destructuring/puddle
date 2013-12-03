@@ -19,6 +19,8 @@ function main {
   if [[ ! -x "$vhome/bin/python" ]]; then
     python $shome/libexec/virtualenv.py --extra-search-dir=$shome/vendor --never-download "$vhome"
   fi
+
+  "$shome/bin/puddle" install pip2pi
 }
 
 require sub "$BASH_SOURCE" "$@"

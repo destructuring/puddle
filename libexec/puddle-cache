@@ -19,7 +19,9 @@ function main {
 
   set +u; source $ghome/bin/activate; set -u
   mkdir -p "$pth_cache"
-  pip install --download-directory "$pth_cache" "$@"
+  if [[ "$#" > 0 ]]; then
+    pip install --download-directory "$pth_cache" "$@"
+  fi
   dir2pi "$pth_cache"
 }
 
