@@ -14,7 +14,7 @@ source "$shome/libexec/_jason"
 
 # entry point
 function main {
-  local vhome="$1"; shift
+  local vhome="."
 
   local cmd_venv="$shome/bin/virtualenv"
   if [[ ! -x "$cmd_venv" ]]; then
@@ -23,7 +23,7 @@ function main {
 
   $cmd_venv --extra-search-dir=$shome/vendor/cache --never-download "$vhome"
 
-  "$shome/bin/puddle" install pip2pi
+  "$shome/bin/puddle" install pip2pi virtualenv
 }
 
 require sub "$BASH_SOURCE" "$@"
